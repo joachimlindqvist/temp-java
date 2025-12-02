@@ -9,7 +9,7 @@ import lombok.Setter;
 public class CssValue {
     private String value;
 
-    CssValue(String value) {
+    public CssValue(String value) {
         this.value = value;
     }
 }

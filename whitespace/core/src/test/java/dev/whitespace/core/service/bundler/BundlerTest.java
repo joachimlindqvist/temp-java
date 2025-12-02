@@ -32,6 +32,8 @@ public class BundlerTest {
                 })
                 .toList();
 
+		new Bundler(lines).execute();
+
         IO.println(lines);
     }
 }

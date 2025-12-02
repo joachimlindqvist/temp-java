@@ -14,6 +14,13 @@ public class Recordable {
     public @Nullable Location location;
     public @Nullable Log log;
     public @Nullable Storage storage;
+	public @Nullable Stylesheet stylesheet;
+	public @Nullable UserInput userInput;
+	public @Nullable WindowSize windowSize;
+	public @Nullable Scroll scroll;
+	public @Nullable Http http;
+	public Http.Request httpRequest;
+	public Http.Response httpResponse;
 
     public static class Cursor {
         public String target;
@@ -98,13 +105,13 @@ public class Recordable {
     }
 
 
-    public static class Http {
+    public class Http {
         public @Nullable Meta requestMeta;
         public @Nullable Request request;
         public @Nullable Meta responseMeta;
         public @Nullable Response response;
 
-        public static class Request {
+        public class Request {
             public HashMap<String, List<String>> headers;
             public String method;
             public String url;
@@ -112,7 +119,7 @@ public class Recordable {
             public String body;
         }
 
-        public static class Response {
+        public class Response {
             public HashMap<String, List<String>> headers;
             public String method;
             public String url;

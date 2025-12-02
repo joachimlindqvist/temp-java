@@ -1,7 +1,7 @@
 package dev.whitespace.core.service.bundler.scanner;
 
 import dev.whitespace.core.service.bundler.domain.CssValue;
-import dev.whitespace.core.service.bundler.domain.Recordable;
+import dev.whitespace.core.service.bundler.visitor.RelativeVisitor;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,7 +12,7 @@ public class CssScanner {
     private static final Pattern cssUrlDoubleQuotedPattern = Pattern.compile("url\\(\"(?<ref>[^\"]+)\"\\)");
     private static final Pattern cssUrlSingleQuotedPattern = Pattern.compile("url\\('(?<ref>[^']+')\\)");
     private static final Pattern cssUrlUnquotePattern = Pattern.compile("url\\((?<ref>[^)]+)\\)");
-    private static final Pattern cssSourceMapPatter = Pattern.compile("sourceMappingURL=(?<ref>[^*]+)");
+    private static final Pattern cssSourceMapPattern = Pattern.compile("sourceMappingURL=(?<ref>[^*]+)");
 
     static void scan(CssValue css, RelativeVisitor visitor) {
         scanCssFromImportPattern(css, visitor);

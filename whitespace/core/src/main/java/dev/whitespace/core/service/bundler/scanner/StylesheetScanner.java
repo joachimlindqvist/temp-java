@@ -2,6 +2,7 @@ package dev.whitespace.core.service.bundler.scanner;
 
 import dev.whitespace.core.service.bundler.domain.CssValue;
 import dev.whitespace.core.service.bundler.domain.Recordable;
+import dev.whitespace.core.service.bundler.visitor.RelativeVisitor;
 
 public class StylesheetScanner {
     static void scan(Recordable.Stylesheet stylesheet, RelativeVisitor visitor) {

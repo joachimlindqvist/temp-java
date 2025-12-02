@@ -1,11 +1,15 @@
 package dev.whitespace.core.service.bundler.scanner;
 
 import dev.whitespace.core.service.bundler.domain.Recordable;
+import dev.whitespace.core.service.bundler.visitor.RelativeVisitor;
 
 public class DomScanner {
     static void scan(Recordable.Dom dom, RelativeVisitor visitor) {
         fromSetAttribute(dom, visitor);
-    }
+//		fromPropertySetter(dom, visit);
+//		fromStylesheetModifier(dom, visit);
+		fromNodeArguments(dom, visitor);
+	}
 
     private static void fromSetAttribute(Recordable.Dom dom, RelativeVisitor visitor) {
         if (dom.isProperty("setAttribute") && dom.hasArgumentSize(2)) {
@@ -19,8 +23,15 @@ public class DomScanner {
 
             }
         }
-
     }
+
+	private static void fromNodeArguments(Recordable.Dom dom, RelativeVisitor visitor) {
+		for (var argument : dom.arguments) {
+			if (argument.node != null) {
+				HtmlScanner.scan(argument.node, visitor);
+			}
+		}
+	}
 }
 
 //public class DomScanner(Dom dom) : IRelativeScanner

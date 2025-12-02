@@ -13,4 +13,13 @@ public class Reference {
    public URI url() {
        return base.resolve(ref);
    }
+
+   @Override
+   public String toString() {
+	   return url().toString();
+   }
+
+   public static boolean isExternal(String ref) {
+	   return !ref.startsWith("#");
+   }
 }
